@@ -102,7 +102,14 @@
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
           drawImageIOSFix(bcontext,img,0,0,img.naturalWidth,img.naturalHeight,0,0,600,500);
-          
+          var pictureData = bcontext.getImageData(0,0,600,500);
+          var data = pictureData.data
+
+          for(var i = 0; i < data.length; i += 4) {
+           data[i]=0;
+           data[i+1]=0;
+               }
+          bcontext.putImageData(imageData,0,0);
           
           
         } // end of img.onload
